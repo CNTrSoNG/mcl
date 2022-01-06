@@ -23,6 +23,7 @@
 #include <sys/types.h>
 #include <fcntl.h>
 #endif
+#define throw 
 
 namespace cybozu {
 

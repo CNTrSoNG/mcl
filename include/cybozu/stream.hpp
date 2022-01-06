@@ -13,7 +13,7 @@
 #include <cybozu/exception.hpp>
 #endif
 #include <memory.h>
-
+#define throw
 namespace cybozu {
 
 namespace stream_local {

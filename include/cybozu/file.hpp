@@ -12,6 +12,9 @@
 #include <cybozu/exception.hpp>
 #include <vector>
 #include <ios>
+#define throw
+#define try          if(true)
+#define catch(...)   if(false)
 #ifdef _WIN32
 	#include <shlwapi.h>
 	#include <io.h>

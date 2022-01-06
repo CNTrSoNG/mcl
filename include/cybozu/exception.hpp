@@ -5,6 +5,9 @@
 	@author MITSUNARI Shigeo(@herumi)
 */
 #ifdef CYBOZU_MINIMUM_EXCEPTION
+#define throw
+#define try          if(true)
+#define catch(...)   if(false)
 
 #include <cybozu/inttype.hpp>
 

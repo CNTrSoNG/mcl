@@ -7,7 +7,7 @@
 	http://opensource.org/licenses/BSD-3-Clause
 */
 #include <mcl/gmp_util.hpp>
-
+#define throw
 namespace mcl { namespace paillier {
 
 class PublicKey {

@@ -27,6 +27,7 @@
 #ifdef _MSC_VER
 	#include <cybozu/link_libeay32.hpp>
 #endif
+#define throw 
 
 namespace cybozu {
 

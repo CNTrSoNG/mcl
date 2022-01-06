@@ -17,6 +17,7 @@
 #include <cybozu/exception.hpp>
 #include <cybozu/atoi.hpp>
 
+#define throw
 /*
 	Option parser
 

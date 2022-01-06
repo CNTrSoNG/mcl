@@ -30,7 +30,7 @@
 #include <mcl/util.hpp>
 #include <mcl/operator.hpp>
 #include <mcl/conversion.hpp>
-
+#define throw
 namespace mcl {
 
 struct FpTag;

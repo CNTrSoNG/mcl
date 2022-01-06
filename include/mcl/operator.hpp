@@ -8,6 +8,7 @@
 */
 #include <mcl/op.hpp>
 #include <mcl/util.hpp>
+#define throw
 #ifdef _MSC_VER
 	#ifndef MCL_FORCE_INLINE
 		#define MCL_FORCE_INLINE __forceinline
