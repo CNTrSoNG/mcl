@@ -82,7 +82,7 @@ if(MCL_USE_LLVM AND NOT CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 	message(WARNING "MCL_USE_LLVM will not be used: requiring clang/clang++.")
 endif()
 
-add_library(mcl SHARED src/fp.cpp)
+add_library(mcl STATIC src/fp.cpp)
 add_library(mcl::mcl ALIAS mcl)
 target_compile_definitions(mcl PUBLIC MCL_NO_AUTOLINK MCLBN_NO_AUTOLINK)
 target_include_directories(mcl PUBLIC
@@ -338,7 +338,7 @@ foreach(bit IN ITEMS 256 384 384_256)
 	target_compile_options(mclbn${bit} PRIVATE ${MCL_COMPILE_OPTIONS})
 	target_compile_definitions(mclbn${bit}
 		PUBLIC MCL_NO_AUTOLINK MCLBN_NO_AUTOLINK)
-	target_link_libraries(mclbn${bit} PUBLIC mcl::mcl)
+	target_link_libraries(mclbn${bit} PUBLIC mcl::mcl_st)
 	set_target_properties(mclbn${bit} PROPERTIES
 		VERSION ${mcl_VERSION}
 		SOVERSION ${mcl_VERSION_MAJOR})
