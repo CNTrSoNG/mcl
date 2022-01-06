@@ -17,6 +17,7 @@
 #include <mcl/randgen.hpp>
 #include <mcl/config.hpp>
 #include <mcl/conversion.hpp>
+#define throw
 
 #ifdef _MSC_VER
 	#pragma warning(push)

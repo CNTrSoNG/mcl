@@ -14,6 +14,7 @@
 	#include <stdlib.h>
 #endif
 #include <cybozu/inttype.hpp>
+#define throw
 
 namespace cybozu {
 
