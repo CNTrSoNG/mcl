@@ -1069,13 +1069,13 @@ int main(int argc, char *argv[])
 		}
 	}
 	Code c;
-	fprintf(stderr, "llvmVer=0x%02x\n", llvmVer);
+	// fprintf(stderr, "llvmVer=0x%02x\n", llvmVer);
 	c.setLlvmVer(llvmVer);
 	c.wasm = wasm;
 	c.setUnit(unit);
 	uint32_t maxBitSize = MCL_MAX_BIT_SIZE;
 	c.gen(privateFuncList, maxBitSize, suf);
 } catch (std::exception& e) {
-	printf("ERR %s\n", e.what());
+	// printf("ERR %s\n", e.what());
 	return 1;
 }

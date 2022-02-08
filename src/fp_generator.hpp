@@ -23,40 +23,40 @@ namespace mcl {
 
 #ifdef MCL_DUMP_JIT
 struct DumpCode {
-	FILE *fp_;
+	// FILE *fp_;
 	DumpCode()
-		: fp_(stdout)
+		// : fp_(stdout)
 	{
 	}
 	void set(const std::string& name, const uint8_t *begin, const size_t size)
 	{
-		fprintf(fp_, "segment .text\n");
-		fprintf(fp_, "global %s\n", name.c_str());
-		fprintf(fp_, "align 16\n");
-		fprintf(fp_, "%s:\n", name.c_str());
+		// fprintf(fp_, "segment .text\n");
+		// fprintf(fp_, "global %s\n", name.c_str());
+		// fprintf(fp_, "align 16\n");
+		// fprintf(fp_, "%s:\n", name.c_str());
 		const uint8_t *p = begin;
 		size_t remain = size;
 		while (remain > 0) {
 			size_t n = remain >= 16 ? 16 : remain;
-			fprintf(fp_, "db ");
+			// fprintf(fp_, "db ");
 			for (size_t i = 0; i < n; i++) {
-				fprintf(fp_, "0x%02x,", *p++);
+				// fprintf(fp_, "0x%02x,", *p++);
 			}
-			fprintf(fp_, "\n");
+			// fprintf(fp_, "\n");
 			remain -= n;
 		}
 	}
 	void dumpData(const void *begin, const void *end)
 	{
-		fprintf(fp_, "align 16\n");
-		fprintf(fp_, "dq ");
+		// fprintf(fp_, "align 16\n");
+		// fprintf(fp_, "dq ");
 		const uint64_t *p = (const uint64_t*)begin;
 		const uint64_t *pe = (const uint64_t*)end;
 		const size_t n = pe - p;
 		for (size_t i = 0; i < n; i++) {
-			fprintf(fp_, "0x%016llx,", (unsigned long long)*p++);
+			// fprintf(fp_, "0x%016llx,", (unsigned long long)*p++);
 		}
-		fprintf(fp_, "\n");
+		// fprintf(fp_, "\n");
 	}
 };
 template<class T>
@@ -322,7 +322,7 @@ struct FpGenerator : Xbyak::CodeGenerator {
 		if (Xbyak::GetError()) return false;
 #ifndef NDEBUG
 		if (hasUndefinedLabel()) {
-			fprintf(stderr, "fp_generator has bugs.\n");
+			// fprintf(stderr, "fp_generator has bugs.\n");
 			exit(1);
 			return false;
 		}
@@ -2418,11 +2418,11 @@ private:
 	}
 	static inline void debug_put_inner(const uint64_t *ptr, int n)
 	{
-		printf("debug ");
+		// printf("debug ");
 		for (int i = 0; i < n; i++) {
-			printf("%016llx", (long long)ptr[n - 1 - i]);
+			// printf("%016llx", (long long)ptr[n - 1 - i]);
 		}
-		printf("\n");
+		// printf("\n");
 	}
 #ifdef _MSC_VER
 	void debug_put(const RegExp& m, int n)

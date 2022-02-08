@@ -22,25 +22,27 @@ namespace mcl {
 namespace impl {
 
 struct File {
-	FILE *fp;
-	File() : fp(stdout) {}
-	~File() { if (fp != stdout) fclose(fp); }
+	// FILE *fp;
+	// File() : fp(stdout) {}
+	// ~File() { if (fp != stdout) fclose(fp); }
+	File() {}
+	~File() {}
 	void open(const std::string& file)
 	{
-#ifdef _MSC_VER
-		bool isOK = fopen_s(&fp, file.c_str(), "wb") != 0;
-#else
-		fp = fopen(file.c_str(), "wb");
-		bool isOK = fp != NULL;
-#endif
-		if (!isOK) throw cybozu::Exception("File:open") << file;
+// #ifdef _MSC_VER
+		// bool isOK = fopen_s(&fp, file.c_str(), "wb") != 0;
+// #else
+		// fp = fopen(file.c_str(), "wb");
+		// bool isOK = fp != NULL;
+// #endif
+		// if (!isOK) throw cybozu::Exception("File:open") << file;
 	}
 	void write(const std::string& str)
 	{
-		int ret = fprintf(fp, "%s\n", str.c_str());
-		if (ret < 0) {
-			throw cybozu::Exception("File:write") << str;
-		}
+		// int ret = fprintf(fp, "%s\n", str.c_str());
+		// if (ret < 0) {
+		// 	throw cybozu::Exception("File:write") << str;
+		// }
 	}
 };
 template<size_t dummy=0>

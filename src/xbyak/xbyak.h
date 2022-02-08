@@ -1088,7 +1088,7 @@ public:
 			}
 			for (size_t j = 0; j < 16; j++) {
 				if (j < disp) {
-					printf("%02X", p[i * 16 + j]);
+					// printf("%02X", p[i * 16 + j]);
 				}
 			}
 			putchar('\n');
@@ -1153,7 +1153,8 @@ public:
 		size_t iaddr = reinterpret_cast<size_t>(addr);
 		size_t roundAddr = iaddr & ~(pageSize - static_cast<size_t>(1));
 #ifndef NDEBUG
-		if (pageSize != 4096) fprintf(stderr, "large page(%zd) is used. not tested enough.\n", pageSize);
+		if (pageSize != 4096) 
+		// fprintf(stderr, "large page(%zd) is used. not tested enough.\n", pageSize);
 #endif
 		return mprotect(reinterpret_cast<void*>(roundAddr), size + (iaddr - roundAddr), mode) == 0;
 #else
@@ -2737,7 +2738,8 @@ public:
 	{
 		if (x == 1) return;
 		if (x < 1 || (x & (x - 1))) XBYAK_THROW(ERR_BAD_ALIGN)
-		if (isAutoGrow() && x > inner::ALIGN_PAGE_SIZE) fprintf(stderr, "warning:autoGrow mode does not support %d align\n", (int)x);
+		if (isAutoGrow() && x > inner::ALIGN_PAGE_SIZE) ;
+		// fprintf(stderr, "warning:autoGrow mode does not support %d align\n", (int)x);
 		size_t remain = size_t(getCurr()) % x;
 		if (remain) {
 			nop(x - remain, useMultiByteNop);

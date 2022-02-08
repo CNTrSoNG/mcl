@@ -386,9 +386,9 @@ inline void dump(const void *buf, size_t n)
 {
 	const uint8_t *s = (const uint8_t *)buf;
 	for (size_t i = 0; i < n; i++) {
-		printf("%02x ", s[i]);
+		// printf("%02x ", s[i]);
 	}
-	printf("\n");
+	// printf("\n");
 }
 
 #ifndef CYBOZU_DONT_USE_STRING

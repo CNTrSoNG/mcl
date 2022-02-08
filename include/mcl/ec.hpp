@@ -1639,12 +1639,12 @@ public:
 #ifndef CYBOZU_DONT_USE_STRING
 	static void dump(const mpz_class& x)
 	{
-		printf("\"%s\",\n", mcl::gmp::getStr(x, 16).c_str());
+		// printf("\"%s\",\n", mcl::gmp::getStr(x, 16).c_str());
 	}
 	static void dump()
 	{
-		printf("\"%s\",\n", rw.getStr(16).c_str());
-		printf("%d,\n", (int)rBitSize);
+		// printf("\"%s\",\n", rw.getStr(16).c_str());
+		// printf("%d,\n", (int)rBitSize);
 		dump(v0);
 		dump(v1);
 		dump(B[0][0]); dump(B[0][1]); dump(B[1][0]); dump(B[1][1]);

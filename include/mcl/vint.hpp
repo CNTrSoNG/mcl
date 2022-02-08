@@ -42,15 +42,16 @@ template<class T>
 void dump(const T *x, size_t n, const char *msg = "")
 {
 	const size_t is4byteUnit = sizeof(*x) == 4;
-	if (msg) printf("%s ", msg);
-	for (size_t i = 0; i < n; i++) {
-		if (is4byteUnit) {
-			printf("%08x", (uint32_t)x[n - 1 - i]);
-		} else {
-			printf("%016llx", (unsigned long long)x[n - 1 - i]);
-		}
-	}
-	printf("\n");
+	// if (msg) 
+		// printf("%s ", msg);
+	// for (size_t i = 0; i < n; i++) {
+	// 	if (is4byteUnit) {
+	// 		printf("%08x", (uint32_t)x[n - 1 - i]);
+	// 	} else {
+	// 		printf("%016llx", (unsigned long long)x[n - 1 - i]);
+	// 	}
+	// }
+	// printf("\n");
 }
 
 inline uint64_t make64(uint32_t H, uint32_t L)

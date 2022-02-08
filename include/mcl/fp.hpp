@@ -54,11 +54,11 @@ inline Mode StrToMode(const std::string& s)
 
 inline void dumpUnit(Unit x)
 {
-#if MCL_SIZEOF_UNIT == 4
-	printf("%08x", (uint32_t)x);
-#else
-	printf("%016llx", (unsigned long long)x);
-#endif
+// #if MCL_SIZEOF_UNIT == 4
+	// printf("%08x", (uint32_t)x);
+// #else
+	// printf("%016llx", (unsigned long long)x);
+// #endif
 }
 
 bool isEnableJIT(); // 1st call is not threadsafe
@@ -158,7 +158,7 @@ public:
 		for (size_t i = 0; i < N; i++) {
 			fp::dumpUnit(v_[N - 1 - i]);
 		}
-		printf("\n");
+		// printf("\n");
 	}
 	/*
 		xi_a is used for Fp2::mul_xi(), where xi = xi_a + i and i^2 = -1

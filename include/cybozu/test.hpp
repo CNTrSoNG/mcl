@@ -120,7 +120,7 @@ inline void test(bool ret, const std::string& msg, const std::string& param, con
 {
 	autoRun.set(ret);
 	if (!ret) {
-		printf("%s(%d):ctest:%s(%s);\n", file, line, msg.c_str(), param.c_str());
+		// printf("%s(%d):ctest:%s(%s);\n", file, line, msg.c_str(), param.c_str());
 	}
 }
 

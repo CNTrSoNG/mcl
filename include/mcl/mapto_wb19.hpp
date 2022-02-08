@@ -496,9 +496,9 @@ struct MapTo_WB19 {
 	void put(const T& P) const
 	{
 		const int base = 10;
-		printf("x=%s\n", P.x.getStr(base).c_str());
-		printf("y=%s\n", P.y.getStr(base).c_str());
-		printf("z=%s\n", P.z.getStr(base).c_str());
+		// printf("x=%s\n", P.x.getStr(base).c_str());
+		// printf("y=%s\n", P.y.getStr(base).c_str());
+		// printf("z=%s\n", P.z.getStr(base).c_str());
 	}
 	void Fp2ToG2(G2& P, const Fp2& t, const Fp2 *t2 = 0) const
 	{

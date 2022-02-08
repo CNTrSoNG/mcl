@@ -70,15 +70,15 @@ private:
 	HCRYPTPROV prov_;
 #else
 	RandomGenerator()
-		: fp_(::fopen("/dev/urandom", "rb"))
+		// : fp_(::fopen("/dev/urandom", "rb"))
 	{
-#ifndef CYBOZU_DONT_USE_EXCEPTION
-		if (!fp_) throw cybozu::Exception("randomgenerator");
-#endif
+// #ifndef CYBOZU_DONT_USE_EXCEPTION
+		// if (!fp_) throw cybozu::Exception("randomgenerator");
+// #endif
 	}
 	~RandomGenerator()
 	{
-		if (fp_) ::fclose(fp_);
+		// if (fp_) ::fclose(fp_);
 	}
 	/*
 		fill buf[0..bufNum-1] with random data
@@ -87,15 +87,15 @@ private:
 	template<class T>
 	void read(bool *pb, T *buf, size_t bufNum)
 	{
-		if (fp_ == 0) {
-			*pb = false;
-			return;
-		}
-		const size_t byteSize = sizeof(T) * bufNum;
-		*pb = ::fread(buf, 1, (int)byteSize, fp_) == byteSize;
+		// if (fp_ == 0) {
+		// 	*pb = false;
+		// 	return;
+		// }
+		// const size_t byteSize = sizeof(T) * bufNum;
+		// *pb = ::fread(buf, 1, (int)byteSize, fp_) == byteSize;
 	}
 private:
-	FILE *fp_;
+	// FILE *fp_;
 #endif
 #ifndef CYBOZU_DONT_USE_EXCEPTION
 public:

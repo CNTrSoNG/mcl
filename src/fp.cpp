@@ -115,14 +115,14 @@ bool isEnableJIT()
 	if (status == -1) {
 #ifndef _MSC_VER
 		status = 1;
-		FILE *fp = fopen("/sys/fs/selinux/enforce", "rb");
-		if (fp) {
-			char c;
-			if (fread(&c, 1, 1, fp) == 1 && c == '1') {
-				status = 0;
-			}
-			fclose(fp);
-		}
+		// FILE *fp = fopen("/sys/fs/selinux/enforce", "rb");
+		// if (fp) {
+		// 	char c;
+		// 	if (fread(&c, 1, 1, fp) == 1 && c == '1') {
+		// 		status = 0;
+		// 	}
+		// 	fclose(fp);
+		// }
 #endif
 		if (status != 0) {
 			MIE_ALIGN(4096) char buf[4096];
@@ -529,7 +529,7 @@ bool Op::init(const mpz_class& _p, size_t maxBitSize, int _xi_a, Mode mode, size
 	if (mode == FP_AUTO) mode = FP_GMP_MONT;
 	isMont = mode == FP_GMP_MONT || mode == FP_LLVM_MONT || mode == FP_XBYAK;
 #if 0
-	fprintf(stderr, "mode=%s, isMont=%d, maxBitSize=%d"
+	// fprintf(stderr, "mode=%s, isMont=%d, maxBitSize=%d"
 #ifdef MCL_USE_XBYAK
 		" MCL_USE_XBYAK"
 #endif

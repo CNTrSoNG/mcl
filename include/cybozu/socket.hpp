@@ -176,7 +176,7 @@ struct InitTerm {
 		WSADATA data;
 		int err = ::WSAStartup(MAKEWORD(2, 2), &data);
 		if (err) {
-			fprintf(stderr, "WSAStartup failed : %d\n", err);
+			// fprintf(stderr, "WSAStartup failed : %d\n", err);
 			exit(1);
 		}
 #else

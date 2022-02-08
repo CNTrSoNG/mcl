@@ -482,9 +482,9 @@ public:
 	void putFamily() const
 	{
 #ifndef XBYAK_ONLY_CLASS_CPU
-		printf("family=%d, model=%X, stepping=%d, extFamily=%d, extModel=%X\n",
-			family, model, stepping, extFamily, extModel);
-		printf("display:family=%X, model=%X\n", displayFamily, displayModel);
+		// printf("family=%d, model=%X, stepping=%d, extFamily=%d, extModel=%X\n",
+		// 	family, model, stepping, extFamily, extModel);
+		// printf("display:family=%X, model=%X\n", displayFamily, displayModel);
 #endif
 	}
 	bool has(Type type) const
@@ -578,7 +578,7 @@ public:
 	Pack& append(const Xbyak::Reg64& t)
 	{
 		if (n_ == maxTblNum) {
-			fprintf(stderr, "ERR Pack::can't append\n");
+			// fprintf(stderr, "ERR Pack::can't append\n");
 			XBYAK_THROW_RET(ERR_BAD_PARAMETER, *this)
 		}
 		tbl_[n_++] = &t;
@@ -587,7 +587,7 @@ public:
 	void init(const Xbyak::Reg64 *tbl, size_t n)
 	{
 		if (n > maxTblNum) {
-			fprintf(stderr, "ERR Pack::init bad n=%d\n", (int)n);
+			// fprintf(stderr, "ERR Pack::init bad n=%d\n", (int)n);
 			XBYAK_THROW(ERR_BAD_PARAMETER)
 		}
 		n_ = n;
@@ -598,7 +598,7 @@ public:
 	const Xbyak::Reg64& operator[](size_t n) const
 	{
 		if (n >= n_) {
-			fprintf(stderr, "ERR Pack bad n=%d(%d)\n", (int)n, (int)n_);
+			// fprintf(stderr, "ERR Pack bad n=%d(%d)\n", (int)n, (int)n_);
 			XBYAK_THROW_RET(ERR_BAD_PARAMETER, rax)
 		}
 		return *tbl_[n];
@@ -611,7 +611,7 @@ public:
 	{
 		if (num == size_t(-1)) num = n_ - pos;
 		if (pos + num > n_) {
-			fprintf(stderr, "ERR Pack::sub bad pos=%d, num=%d\n", (int)pos, (int)num);
+			// fprintf(stderr, "ERR Pack::sub bad pos=%d, num=%d\n", (int)pos, (int)num);
 			XBYAK_THROW_RET(ERR_BAD_PARAMETER, Pack())
 		}
 		Pack pack;
@@ -624,9 +624,9 @@ public:
 	void put() const
 	{
 		for (size_t i = 0; i < n_; i++) {
-			printf("%s ", tbl_[i]->toString());
+			// printf("%s ", tbl_[i]->toString());
 		}
-		printf("\n");
+		// printf("\n");
 	}
 };
 
@@ -771,7 +771,7 @@ class Profiler {
 	const char *suffix_;
 	const void *startAddr_;
 #ifdef XBYAK_USE_PERF
-	FILE *fp_;
+	// FILE *fp_;
 #endif
 public:
 	enum {
@@ -784,7 +784,7 @@ public:
 		, suffix_("")
 		, startAddr_(0)
 #ifdef XBYAK_USE_PERF
-		, fp_(0)
+		// , fp_(0)
 #endif
 	{
 	}
@@ -811,22 +811,22 @@ public:
 				const int pid = getpid();
 				char name[128];
 				snprintf(name, sizeof(name), "/tmp/perf-%d.map", pid);
-				fp_ = fopen(name, "a+");
-				if (fp_ == 0) {
-					fprintf(stderr, "can't open %s\n", name);
-					return;
-				}
+				// fp_ = fopen(name, "a+");
+				// if (fp_ == 0) {
+					// fprintf(stderr, "can't open %s\n", name);
+					// return;
+				// }
 			}
 			mode_ = Perf;
 #endif
 			return;
 		case VTune:
 #ifdef XBYAK_USE_VTUNE
-			dlopen("dummy", RTLD_LAZY); // force to load dlopen to enable jit profiling
-			if (iJIT_IsProfilingActive() != iJIT_SAMPLING_ON) {
-				fprintf(stderr, "VTune profiling is not active\n");
-				return;
-			}
+			// dlopen("dummy", RTLD_LAZY); // force to load dlopen to enable jit profiling
+			// if (iJIT_IsProfilingActive() != iJIT_SAMPLING_ON) {
+				// fprintf(stderr, "VTune profiling is not active\n");
+				// return;
+			// }
 			mode_ = VTune;
 #endif
 			return;
@@ -839,9 +839,9 @@ public:
 	void close()
 	{
 #ifdef XBYAK_USE_PERF
-		if (fp_ == 0) return;
-		fclose(fp_);
-		fp_ = 0;
+		// if (fp_ == 0) return;
+		// fclose(fp_);
+		// fp_ = 0;
 #endif
 	}
 	void set(const char *funcName, const void *startAddr, size_t funcSize) const
@@ -854,18 +854,18 @@ public:
 #endif
 #ifdef XBYAK_USE_PERF
 		if (mode_ == Perf) {
-			if (fp_ == 0) return;
-			fprintf(fp_, "%llx %zx %s%s", (long long)startAddr, funcSize, funcName, suffix_);
+			// if (fp_ == 0) return;
+			// fprintf(fp_, "%llx %zx %s%s", (long long)startAddr, funcSize, funcName, suffix_);
 			/*
 				perf does not recognize the function name which is less than 3,
 				so append '_' at the end of the name if necessary
 			*/
 			size_t n = strlen(funcName) + strlen(suffix_);
 			for (size_t i = n; i < 3; i++) {
-				fprintf(fp_, "_");
+				// fprintf(fp_, "_");
 			}
-			fprintf(fp_, "\n");
-			fflush(fp_);
+			// fprintf(fp_, "\n");
+			// fflush(fp_);
 		}
 #endif
 #ifdef XBYAK_USE_VTUNE

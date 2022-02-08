@@ -325,11 +325,11 @@ class Option {
 		}
 		void usage() const
 		{
-			printf("  -%s %s%s\n", opt.c_str(), help.c_str(), isMust ? " (must)" : "");
+			// printf("  -%s %s%s\n", opt.c_str(), help.c_str(), isMust ? " (must)" : "");
 		}
 		void shortUsage() const
 		{
-			printf(" -%s %s", opt.c_str(), mode == N_is0 ? "" : mode == N_is1 ? "para" : "para...");
+			// printf(" -%s %s", opt.c_str(), mode == N_is0 ? "" : mode == N_is1 ? "para" : "para...");
 		}
 		bool isSet() const { return var.isSet(); }
 		const void *get() const { return var.get(); }
@@ -652,7 +652,7 @@ public:
 		return true;
 	ERR:
 		assert(err.type);
-		printf("%s\n", err.what());
+		// printf("%s\n", err.what());
 		return false;
 	}
 	/*
@@ -673,31 +673,35 @@ public:
 	}
 	void usage() const
 	{
-		if (!desc_.empty()) printf("%s\n", desc_.c_str());
+		if (!desc_.empty()) ;
+			// printf("%s\n", desc_.c_str());
 		if (usage_.empty()) {
-			printf("usage:%s", progName_.c_str());
-			if (!infoVec_.empty()) printf(" [opt]");
+			// printf("usage:%s", progName_.c_str());
+			if (!infoVec_.empty()) ;
+				// printf(" [opt]");
 			for (size_t i = 0; i < infoVec_.size(); i++) {
 				if (infoVec_[i].isMust) infoVec_[i].shortUsage();
 			}
 			for (size_t i = 0; i < paramVec_.size(); i++) {
-				printf(" %s", paramVec_[i].opt.c_str());
+				// printf(" %s", paramVec_[i].opt.c_str());
 			}
 			if (paramMode_ == P_variable) {
-				printf(" %s", remains_.opt.c_str());
+				// printf(" %s", remains_.opt.c_str());
 			}
-			printf("\n");
+			// printf("\n");
 		} else {
-			printf("%s\n", usage_.c_str());
+			// printf("%s\n", usage_.c_str());
 			if (!showOptUsage_) return;
 		}
 		for (size_t i = 0; i < paramVec_.size(); i++) {
 			const Info& param = paramVec_[i];
-			if (!param.help.empty()) printf("  %s %s\n", paramVec_[i].opt.c_str(), paramVec_[i].help.c_str());
+			if (!param.help.empty()) ;
+				// printf("  %s %s\n", paramVec_[i].opt.c_str(), paramVec_[i].help.c_str());
 		}
-		if (!remains_.help.empty()) printf("  %s %s\n", remains_.opt.c_str(), remains_.help.c_str());
+		if (!remains_.help.empty()) ;
+			// printf("  %s %s\n", remains_.opt.c_str(), remains_.help.c_str());
 		if (!helpOpt_.empty()) {
-			printf("  -%s %s\n", helpOpt_.c_str(), help_.c_str());
+				// printf("  -%s %s\n", helpOpt_.c_str(), help_.c_str());
 		}
 		for (size_t i = 0; i < infoVec_.size(); i++) {
 			infoVec_[i].usage();

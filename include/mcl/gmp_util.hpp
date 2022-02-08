@@ -772,12 +772,12 @@ public:
 #if !defined(CYBOZU_DONT_USE_USE_STRING) && !defined(CYBOZU_DONT_USE_EXCEPTION)
 	void dump() const
 	{
-		printf("\"%s\",\n", mcl::gmp::getStr(p, 16).c_str());
-		printf("\"%s\",\n", mcl::gmp::getStr(g, 16).c_str());
-		printf("%d,\n", r);
-		printf("\"%s\",\n", mcl::gmp::getStr(q, 16).c_str());
-		printf("\"%s\",\n", mcl::gmp::getStr(s, 16).c_str());
-		printf("\"%s\",\n", mcl::gmp::getStr(q_add_1_div_2, 16).c_str());
+		// printf("\"%s\",\n", mcl::gmp::getStr(p, 16).c_str());
+		// printf("\"%s\",\n", mcl::gmp::getStr(g, 16).c_str());
+		// printf("%d,\n", r);
+		// printf("\"%s\",\n", mcl::gmp::getStr(q, 16).c_str());
+		// printf("\"%s\",\n", mcl::gmp::getStr(s, 16).c_str());
+		// printf("\"%s\",\n", mcl::gmp::getStr(q_add_1_div_2, 16).c_str());
 	}
 #endif
 	void set(bool *pb, const mpz_class& _p, bool usePrecomputedTable = true)
