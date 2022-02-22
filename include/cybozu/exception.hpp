@@ -107,11 +107,11 @@ inline std::string ConvertErrorNoToString(int err)
 #elif defined(_GNU_SOURCE)
 	ret = ::strerror_r(err, errBuf, sizeof(errBuf));
 #else
-	if (strerror_r(err, errBuf, sizeof(errBuf)) == 0) {
-		ret = errBuf;
-	} else {
-		ret = "err";
-	}
+	// if (strerror_r(err, errBuf, sizeof(errBuf)) == 0) {
+	// 	ret = errBuf;
+	// } else {
+	ret = "err";
+	// }
 #endif
 	char buf2[64];
 	CYBOZU_SNPRINTF(buf2, sizeof(buf2), "(%d)", err);
